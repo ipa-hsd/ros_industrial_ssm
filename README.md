@@ -40,4 +40,4 @@ Make sure the working workspace overlays airbus_coop workspace
 $ roscore
 $ rosrun airbus_ssm_plugin ssm_interface_node.py
 ```
-Select the *.scxml from the resources folder
+Select the *.scxml from the resources folder and run the state machine
