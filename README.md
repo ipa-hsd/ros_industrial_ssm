@@ -1,7 +1,7 @@
 # ros_industrial_ssm
 Repository for development of state machines for ROS-I components
 
-Package structure
+##### Package structure #####
 ```
 pkg_name 
 |-- resources    
@@ -10,14 +10,14 @@ pkg_name
 |   └-- skills.xml
 |-- src
 |   └-- pkg_name
-|       |-- __init.py__
+|       |-- __init__.py
 |       └-- node.py
 |-- CMakeLists.txt
 |-- package.xml
 └-- setup.py
 ```
 
-#### setup.py #### 
+##### setup.py #####
 Modify the below contents (python pkg):
 
 ```
@@ -32,7 +32,7 @@ id*  : skill_file
 expr : ${pkg_name}/resources/skills.xml
 ```
 
-#### Usage ####
+##### Usage #####
 Make sure the working workspace overlays airbus_coop workspace
 
 ```
