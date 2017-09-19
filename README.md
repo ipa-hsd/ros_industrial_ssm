@@ -26,6 +26,7 @@ d = generate_distutils_setup(
 	package_dir={'': 'src'},
 )
 ```
+##### *.scxml #####
 The global datamodel should have a data field with:
 ```
 id*  : skill_file
