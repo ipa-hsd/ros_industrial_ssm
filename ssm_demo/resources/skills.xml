@@ -3,4 +3,9 @@
     <!-- ssm ud Skills -->
     <skill name="Foo"   pkg="ssm_demo" 	module="ssm_demo.scxml_test"    class="Foo"/>
     <skill name="Bar"   pkg="ssm_demo"  module="ssm_demo.scxml_test"    class="Bar"/>
+
+	<!-- Moveit skills -->
+    <skill name="MoveP2P"   	pkg="ssm_demo" 	module="ssm_demo.ssm_moveit"    class="MoveP2P"/>
+	<skill name="InitRobot"   	pkg="ssm_demo" 	module="ssm_demo.ssm_moveit"    class="InitRobot"/>
+        <skill name="HomeRobot"   	pkg="ssm_demo" 	module="ssm_demo.ssm_moveit"    class="HomeRobot"/>
 </skills>

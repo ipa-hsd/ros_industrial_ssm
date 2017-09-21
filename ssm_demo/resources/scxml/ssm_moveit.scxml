@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" name="ssm_moveit" qt:editorversion="4.2.1" initial="InitRobot">
+    <qt:editorinfo initialGeometry="609.80;217.91;-20;-20;40;40"/>
+    <final id="Final_1">
+        <qt:editorinfo geometry="609.80;1024.40;-20;-20;40;40" scenegeometry="609.80;1024.40;589.80;1004.40;40;40"/>
+    </final>
+    <datamodel>
+        <data id="skill_file" expr="${ssm_demo}/resources/skills.xml"/>
+        <data id="target" expr="[0.3, 0, 0.8, 0, 90, 0]"/>
+    </datamodel>
+    <state id="InitRobot">
+        <qt:editorinfo geometry="609.80;357.42;-60;-50;120;100" scenegeometry="609.80;357.42;549.80;307.42;120;100"/>
+        <datamodel>
+            <data id="skill" expr="InitRobot"/>
+            <data id="group" expr="arm"/>
+        </datamodel>
+        <transition type="external" event="success" target="HomeRobot">
+            <qt:editorinfo movePoint="42.77;-4.07" endTargetFactors="49.47;2.98"/>
+        </transition>
+    </state>
+    <state id="HomeRobot">
+        <qt:editorinfo geometry="489.80;566.16;-60;-70.94;360;419.94" scenegeometry="489.80;566.16;429.80;495.22;360;419.94"/>
+        <state id="MoveP2P">
+            <qt:editorinfo geometry="120;139.03;-60;-50;120;100" scenegeometry="609.80;705.19;549.80;655.19;120;100"/>
+            <datamodel>
+                <data id="skill" expr="MoveP2P"/>
+            </datamodel>
+            <transition type="external" event="success" target="Final_2">
+                <qt:editorinfo movePoint="27.49;-3.05" endTargetFactors="59.37;26.35"/>
+            </transition>
+        </state>
+        <initial>
+            <qt:editorinfo geometry="120;32.59;-20;-20;40;40" scenegeometry="609.80;598.75;589.80;578.75;40;40"/>
+            <transition type="external" target="MoveP2P">
+                <qt:editorinfo endTargetFactors="50.75;9.79"/>
+            </transition>
+        </initial>
+        <final id="Final_2">
+            <qt:editorinfo geometry="120;282.08;-20;-20;40;40" scenegeometry="609.80;848.24;589.80;828.24;40;40"/>
+        </final>
+        <transition type="external" event="success" target="Final_1">
+            <qt:editorinfo movePoint="46.84;-1.01" localGeometry="2.65;77.92" startTargetFactors="49.51;96.79"/>
+        </transition>
+    </state>
+</scxml>

@@ -2,12 +2,12 @@
 <scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" name="scxml_test" qt:editorversion="4.2.1" initial="FOO">
     <qt:editorinfo initialGeometry="333.41;129.09;-20;-20;40;40"/>
     <final id="Final_1">
-        <qt:editorinfo scenegeometry="333.41;584.49;313.41;564.49;40;40" geometry="333.41;584.49;-20;-20;40;40"/>
+        <qt:editorinfo geometry="333.41;584.49;-20;-20;40;40" scenegeometry="333.41;584.49;313.41;564.49;40;40"/>
     </final>
     <state id="FOO">
-        <qt:editorinfo scenegeometry="333.41;288.68;273.41;238.68;120;100" geometry="333.41;288.68;-60;-50;120;100"/>
+        <qt:editorinfo geometry="333.41;288.68;-60;-50;120;100" scenegeometry="333.41;288.68;273.41;238.68;120;100"/>
         <transition type="external" event="out1" target="Bar">
-            <qt:editorinfo movePoint="14.23;8.13" endTargetFactors="11.03;34.32" startTargetFactors="91.18;33.81"/>
+            <qt:editorinfo endTargetFactors="11.03;34.32" movePoint="14.23;8.13" startTargetFactors="91.18;33.81"/>
         </transition>
         <datamodel>
             <data id="skill" expr="Foo"/>
@@ -17,7 +17,7 @@
         </transition>
     </state>
     <state id="Bar">
-        <qt:editorinfo scenegeometry="542.81;288.68;482.81;238.68;120;100" geometry="542.81;288.68;-60;-50;120;100"/>
+        <qt:editorinfo geometry="542.81;288.68;-60;-50;120;100" scenegeometry="542.81;288.68;482.81;238.68;120;100"/>
         <transition type="external" event="out1" target="FOO">
             <qt:editorinfo endTargetFactors="91.11;50.88" movePoint="-14.23;8.13"/>
         </transition>
