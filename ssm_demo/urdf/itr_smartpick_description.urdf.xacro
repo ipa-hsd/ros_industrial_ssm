@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"
+       name="itr_smartpick_description" >
+
+	<xacro:include filename="$(find denso_robot_descriptions)/vs087_description/urdf/vs087_macro.urdf.xacro" />
+	<xacro:include filename="$(find itr_smartpick_descriptions)/urdf/table.urdf.xacro" />
+
+  	<!-- setup empty world -->
+	<link name="world"/>
+
+	<!-- include platform -->
+	<xacro:table prefix="" parent="world">
+  		<origin xyz="0 0 0" rpy="0 0 0"/>
+	</xacro:table>
+
+	<!-- include robot -->
+	<xacro:vs087 prefix="" parent="world">
+  		<origin xyz="${table_width/2} ${table_length/2} ${table_height}" rpy="0 0 0"/>
+	</xacro:vs087>
+</robot>
