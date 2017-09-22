@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"
+       name="eyeT_support" >
+
+	<xacro:macro name="eyeT_support" params="parent prefix *origin">
+		<joint name="${prefix}eyet_support_joint" type="fixed" >
+    		<xacro:insert_block name="origin" />
+    		<parent link="${parent}" />
+    		<child link="${prefix}eyet_support" />
+		</joint>
+        <link name="${prefix}eyet_support">
+        	<inertial>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <mass value="2"/>
+                <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://ssm_demo/meshes/eyeT_support.stl"/>
+                </geometry>
+                <material name="greyish">
+                    <color rgba="0.6 0.6 0.6 1"/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://ssm_demo/meshes/eyeT_support_collision.stl"/>
+                </geometry>
+            </collision>
+        </link>
+    </xacro:macro>
+</robot>

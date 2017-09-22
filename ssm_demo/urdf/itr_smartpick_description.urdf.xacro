@@ -4,7 +4,9 @@
        name="itr_smartpick_description" >
 
 	<xacro:include filename="$(find denso_robot_descriptions)/vs087_description/urdf/vs087_macro.urdf.xacro" />
-	<xacro:include filename="$(find itr_smartpick_descriptions)/urdf/table.urdf.xacro" />
+	<xacro:include filename="$(find ssm_demo)/urdf/table.urdf.xacro" />
+	<xacro:include filename="$(find ssm_demo)/urdf/eyeT_support.urdf.xacro" />
+	<xacro:include filename="$(find ssm_demo)/urdf/bin.urdf.xacro" />
 
   	<!-- setup empty world -->
 	<link name="world"/>
@@ -18,4 +20,14 @@
 	<xacro:vs087 prefix="" parent="world">
   		<origin xyz="${table_width/2} ${table_length/2} ${table_height}" rpy="0 0 0"/>
 	</xacro:vs087>
+
+	<!-- include fake bin -->
+	<xacro:bin prefix="" parent="platform_base">
+  		<origin xyz="0.35 0.2 0" rpy="0 0 -${pi/2}"/>
+	</xacro:bin>
+
+	<!-- include eye-T + support-->
+	<xacro:eyeT_support prefix="" parent="world">
+  		<origin xyz="0 0 0" rpy="0 0 0"/>
+	</xacro:eyeT_support>
 </robot>
