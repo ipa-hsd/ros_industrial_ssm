@@ -13,12 +13,12 @@
 
 	<!-- include platform -->
 	<xacro:table prefix="" parent="world">
-  		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<origin xyz="${-table_width/2} ${-table_length/2} ${-table_height}" rpy="0 0 0"/>
 	</xacro:table>
 
 	<!-- include robot -->
 	<xacro:vs087 prefix="" parent="world">
-  		<origin xyz="${table_width/2} ${table_length/2} ${table_height}" rpy="0 0 0"/>
+  		<origin xyz="0 0 0" rpy="0 0 0"/>
 	</xacro:vs087>
 
 	<!-- include fake bin -->
@@ -27,7 +27,7 @@
 	</xacro:bin>
 
 	<!-- include eye-T + support-->
-	<xacro:eyeT_support prefix="" parent="world">
+	<xacro:eyeT_support prefix="" parent="platform">
   		<origin xyz="0 0 0" rpy="0 0 0"/>
 	</xacro:eyeT_support>
 </robot>
