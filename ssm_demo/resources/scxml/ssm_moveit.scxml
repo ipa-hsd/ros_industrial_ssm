@@ -1,45 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" name="ssm_moveit" qt:editorversion="4.2.1" initial="InitRobot">
-    <qt:editorinfo initialGeometry="609.80;217.91;-20;-20;40;40"/>
+    <qt:editorinfo initialGeometry="197.39;57.02;-20;-20;40;40"/>
     <final id="Final_1">
-        <qt:editorinfo geometry="609.80;1024.40;-20;-20;40;40" scenegeometry="609.80;1024.40;589.80;1004.40;40;40"/>
+        <qt:editorinfo scenegeometry="504.48;1031.53;484.48;1011.53;40;40" geometry="504.48;1031.53;-20;-20;40;40"/>
     </final>
     <datamodel>
         <data id="skill_file" expr="${ssm_demo}/resources/skills.xml"/>
-        <data id="target" expr="[0.3, 0, 0.8, 0, 90, 0]"/>
     </datamodel>
     <state id="InitRobot">
-        <qt:editorinfo geometry="609.80;357.42;-60;-50;120;100" scenegeometry="609.80;357.42;549.80;307.42;120;100"/>
+        <qt:editorinfo scenegeometry="197.39;145.62;137.39;95.62;120;100" geometry="197.39;145.62;-60;-50;120;100"/>
         <datamodel>
             <data id="skill" expr="InitRobot"/>
             <data id="group" expr="arm"/>
         </datamodel>
         <transition type="external" event="success" target="HomeRobot">
-            <qt:editorinfo movePoint="42.77;-4.07" endTargetFactors="49.47;2.98"/>
+            <qt:editorinfo movePoint="30.55;5.09" endTargetFactors="49.47;2.98"/>
         </transition>
     </state>
     <state id="HomeRobot">
-        <qt:editorinfo geometry="489.80;566.16;-60;-70.94;360;419.94" scenegeometry="489.80;566.16;429.80;495.22;360;419.94"/>
-        <state id="MoveP2P">
-            <qt:editorinfo geometry="120;139.03;-60;-50;120;100" scenegeometry="609.80;705.19;549.80;655.19;120;100"/>
+        <qt:editorinfo scenegeometry="80.39;353.33;116.39;232.40;181;336.74" geometry="80.39;353.33;36;-120.93;181;336.74"/>
+        <state id="Move_home">
+            <qt:editorinfo scenegeometry="197.39;400.71;137.39;350.71;120;100" geometry="117;47.38;-60;-50;120;100"/>
             <datamodel>
                 <data id="skill" expr="MoveP2P"/>
             </datamodel>
             <transition type="external" event="success" target="Final_2">
-                <qt:editorinfo movePoint="27.49;-3.05" endTargetFactors="59.37;26.35"/>
+                <qt:editorinfo movePoint="27.49;-3.05" endTargetFactors="59.37;26.35" startTargetFactors="46.87;87.07"/>
             </transition>
         </state>
         <initial>
-            <qt:editorinfo geometry="120;32.59;-20;-20;40;40" scenegeometry="609.80;598.75;589.80;578.75;40;40"/>
-            <transition type="external" target="MoveP2P">
+            <qt:editorinfo scenegeometry="197.39;312.60;177.39;292.60;40;40" geometry="117;-40.73;-20;-20;40;40"/>
+            <transition type="external" target="Move_home">
                 <qt:editorinfo endTargetFactors="50.75;9.79"/>
             </transition>
         </initial>
         <final id="Final_2">
-            <qt:editorinfo geometry="120;282.08;-20;-20;40;40" scenegeometry="609.80;848.24;589.80;828.24;40;40"/>
+            <qt:editorinfo scenegeometry="188.23;509.14;168.23;489.14;40;40" geometry="107.84;155.81;-20;-20;40;40"/>
         </final>
+        <datamodel>
+            <data id="target" expr="[0.3, 0, 0.8, 0, 90, 0]"/>
+        </datamodel>
+        <transition type="external" event="success" target="PickMove">
+            <qt:editorinfo endTargetFactors="4.97;50.39"/>
+        </transition>
+    </state>
+    <state id="PlaceMove">
+        <qt:editorinfo scenegeometry="706.62;771.85;735.62;641.60;165;317.91" geometry="706.62;771.85;29;-130.25;165;317.91"/>
+        <state id="Move_place">
+            <qt:editorinfo scenegeometry="818.12;755.30;758.12;705.30;120;100" geometry="114;41.49;-60;-50;120;100"/>
+            <datamodel>
+                <data id="skill" expr="MoveP2P"/>
+            </datamodel>
+            <transition type="external" event="success" target="Final_2_Copy(1)">
+                <qt:editorinfo movePoint="27.49;3.06" endTargetFactors="59.37;26.35" startTargetFactors="46.87;87.07"/>
+            </transition>
+        </state>
+        <initial>
+            <qt:editorinfo scenegeometry="818.12;667.99;798.12;647.99;40;40" geometry="114;-45.82;-20;-20;40;40"/>
+            <transition type="external" target="Move_place">
+                <qt:editorinfo endTargetFactors="50.75;9.79"/>
+            </transition>
+        </initial>
+        <final id="Final_2_Copy(1)">
+            <qt:editorinfo scenegeometry="815.62;859.43;795.62;839.43;40;40" geometry="111.50;145.62;-20;-20;40;40"/>
+        </final>
+        <datamodel>
+            <data id="target" expr="[0.1, -0.55, 0.6, 0, 180, 0]"/>
+        </datamodel>
+        <transition type="external" event="success" target="HomeRobot_3">
+            <qt:editorinfo movePoint="-10.18;17.31" endTargetFactors="94.35;59.94"/>
+        </transition>
+    </state>
+    <state id="PickMove">
+        <qt:editorinfo scenegeometry="404.21;289.10;430.21;227.34;176;318.66" geometry="404.21;289.10;26;-61.76;176;318.66"/>
+        <state id="Move_pick">
+            <qt:editorinfo scenegeometry="197.39;767.30;137.39;717.30;120;100" geometry="117;113.57;-60;-50;120;100"/>
+            <datamodel>
+                <data id="skill" expr="MoveP2P"/>
+            </datamodel>
+            <transition type="external" event="success" target="Final_2_Copy(1)_Copy(1)">
+                <qt:editorinfo movePoint="27.49;3.06" endTargetFactors="59.37;26.35" startTargetFactors="46.87;87.07"/>
+            </transition>
+        </state>
+        <initial>
+            <qt:editorinfo scenegeometry="197.39;675.12;177.39;655.12;40;40" geometry="117;21.39;-20;-20;40;40"/>
+            <transition type="external" target="Move_pick">
+                <qt:editorinfo endTargetFactors="50.75;9.79"/>
+            </transition>
+        </initial>
+        <final id="Final_2_Copy(1)_Copy(1)">
+            <qt:editorinfo scenegeometry="185.17;870.63;165.17;850.63;40;40" geometry="104.78;216.90;-20;-20;40;40"/>
+        </final>
+        <datamodel>
+            <data id="target" expr="[0.1, 0.55, 0.6, 0, 180, 0]"/>
+        </datamodel>
+        <transition type="external" event="success" target="HomeRobot_2">
+            <qt:editorinfo endTargetFactors="4.10;54.35"/>
+        </transition>
+    </state>
+    <state id="HomeRobot_2">
+        <qt:editorinfo scenegeometry="703.62;349.33;728.62;228.20;179;316.94" geometry="703.62;349.33;25;-121.13;179;316.94"/>
+        <state id="Move_home_2">
+            <qt:editorinfo scenegeometry="197.39;400.71;137.39;350.71;120;100" geometry="117;47.38;-60;-50;120;100"/>
+            <datamodel>
+                <data id="skill" expr="MoveP2P"/>
+            </datamodel>
+            <transition type="external" event="success" target="Final_2_Copy(2)">
+                <qt:editorinfo movePoint="27.49;-3.05" endTargetFactors="59.37;26.35" startTargetFactors="46.87;87.07"/>
+            </transition>
+        </state>
+        <initial>
+            <qt:editorinfo scenegeometry="197.39;312.60;177.39;292.60;40;40" geometry="117;-40.73;-20;-20;40;40"/>
+            <transition type="external" target="Move_home_2">
+                <qt:editorinfo endTargetFactors="50.75;9.79"/>
+            </transition>
+        </initial>
+        <final id="Final_2_Copy(2)">
+            <qt:editorinfo scenegeometry="188.23;509.14;168.23;489.14;40;40" geometry="107.84;155.81;-20;-20;40;40"/>
+        </final>
+        <datamodel>
+            <data id="target" expr="[0.3, 0, 0.8, 0, 90, 0]"/>
+        </datamodel>
+        <transition type="external" event="success" target="PlaceMove">
+            <qt:editorinfo endTargetFactors="47.51;3.29"/>
+        </transition>
+    </state>
+    <state id="HomeRobot_3">
+        <qt:editorinfo scenegeometry="391.98;767.21;419.98;638.09;169;324.93" geometry="391.98;767.21;28;-129.12;169;324.93"/>
+        <state id="Move_home_3">
+            <qt:editorinfo scenegeometry="822.62;400.71;762.62;350.71;120;100" geometry="117;47.38;-60;-50;120;100"/>
+            <datamodel>
+                <data id="skill" expr="MoveP2P"/>
+            </datamodel>
+            <transition type="external" event="success" target="Final_2_Copy(3)">
+                <qt:editorinfo movePoint="27.49;-3.05" endTargetFactors="59.37;26.35" startTargetFactors="46.87;87.07"/>
+            </transition>
+        </state>
+        <initial>
+            <qt:editorinfo scenegeometry="822.62;312.60;802.62;292.60;40;40" geometry="117;-40.73;-20;-20;40;40"/>
+            <transition type="external" target="Move_home_3">
+                <qt:editorinfo endTargetFactors="50.75;9.79"/>
+            </transition>
+        </initial>
+        <final id="Final_2_Copy(3)">
+            <qt:editorinfo scenegeometry="813.46;509.14;793.46;489.14;40;40" geometry="107.84;155.81;-20;-20;40;40"/>
+        </final>
+        <datamodel>
+            <data id="target" expr="[0.3, 0, 0.8, 0, 90, 0]"/>
+        </datamodel>
         <transition type="external" event="success" target="Final_1">
-            <qt:editorinfo movePoint="46.84;-1.01" localGeometry="2.65;77.92" startTargetFactors="49.51;96.79"/>
+            <qt:editorinfo movePoint="26.47;9.16" endTargetFactors="43.79;22.73"/>
         </transition>
     </state>
 </scxml>
