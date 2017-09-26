@@ -5,7 +5,10 @@
     <skill name="Bar"   pkg="ssm_demo"  module="ssm_demo.scxml_test"    class="Bar"/>
 
 	<!-- Moveit skills -->
-    <skill name="MoveP2P"   	pkg="ssm_demo" 	module="ssm_demo.ssm_moveit"    class="MoveP2P"/>
-	<skill name="InitRobot"   	pkg="ssm_demo" 	module="ssm_demo.ssm_moveit"    class="InitRobot"/>
-        <skill name="HomeRobot"   	pkg="ssm_demo" 	module="ssm_demo.ssm_moveit"    class="HomeRobot"/>
+    <skill name="MoveP2P"                   pkg="ssm_demo" 	module="ssm_demo.ssm_moveit"    class="MoveP2P"/>
+    <skill name="MoveNamed"                 pkg="ssm_demo" 	module="ssm_demo.ssm_moveit"    class="MoveNamed"/>
+    <skill name="MoveLine"                  pkg="ssm_demo" 	module="ssm_demo.ssm_moveit"    class="MoveLine"/>
+    <skill name="CalculatePickTrajectory"   pkg="ssm_demo" 	module="ssm_demo.ssm_moveit"    class="CalculatePickTrajectory"/>
+    <skill name="GripperControl"            pkg="ssm_demo" 	module="ssm_demo.ssm_moveit"    class="GripperControl"/>
+    <skill name="InitRobot"                 pkg="ssm_demo" 	module="ssm_demo.ssm_moveit"    class="InitRobot"/>
 </skills>
