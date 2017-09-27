@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"
+       name="suction_gripper_ipa" >
+
+	<xacro:property name="gripper_length" value="0.22" />
+
+	<xacro:macro name="suction_gripper_ipa" params="parent prefix">
+		<!-- mount the tool to the robot -->
+  		<joint name="${prefix}suction_gripper_joint" type="fixed" >
+      		<origin xyz="0 0 0" rpy="0 0 0" />
+      		<parent link="${parent}" />
+      		<child link="${prefix}suction_gripper_flange" />
+  		</joint>
+  		<link name="${prefix}suction_gripper_flange" >
+    		<visual>
+      			<geometry>
+        			<mesh filename="package://itr_smartpick_descriptions/meshes/suction_gripper_fiad_v3_magnet.stl" />
+      			</geometry>
+      			<material name="greyish">
+          			<color rgba="0.0 0.6 0.6 1"/>
+      			</material>
+    		</visual>
+    		<collision>
+      			<geometry>
+        			<mesh filename="package://itr_smartpick_descriptions/meshes/suction_gripper_fiad_collision.stl" />
+      			</geometry>
+    		</collision>
+    		<inertial>
+       			<mass value="0.1" />
+       			<origin xyz="0 0 0" rpy="0 0 0"/>
+       			<inertia ixx="0.001"  ixy="0"  ixz="0" iyy="0.001" iyz="0" izz="0.001" />
+    		</inertial>
+  		</link>
+		<!-- mount the tool to the robot -->
+		<joint name="${prefix}tool_pin_joint" type="fixed" >
+			<origin xyz="0.184 0 0" rpy="0 0 0" />     
+			<parent link="${prefix}suction_gripper_flange" />
+			<child link="${prefix}tool_pin" />
+		</joint>
+		<link name="${prefix}tool_pin">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<geometry>
+					<box size="0.001 0.001 0.001" />
+				</geometry>
+			</collision>
+		</link>
+		<!-- Other convention -->
+		<joint name="${prefix}tool_pin_joint_rotated" type="fixed" >
+			<origin xyz="0 0 0" rpy="0 -${pi/2} 0" />
+			<parent link="${prefix}tool_pin" />
+			<child link="${prefix}tool_pin_rotated" />
+		</joint>
+		<link name="${prefix}tool_pin_rotated"/> 
+	</xacro:macro>
+</robot>

@@ -7,6 +7,7 @@
 	<xacro:include filename="$(find ssm_demo)/urdf/table.urdf.xacro" />
 	<xacro:include filename="$(find ssm_demo)/urdf/eyeT_support.urdf.xacro" />
 	<xacro:include filename="$(find ssm_demo)/urdf/bin.urdf.xacro" />
+	<xacro:include filename="$(find ssm_demo)/urdf/suction_gripper_ipa_magnet.urdf.xacro" />
 
   	<!-- setup empty world -->
 	<link name="world"/>
@@ -30,4 +31,17 @@
 	<xacro:eyeT_support prefix="" parent="platform">
   		<origin xyz="0 0 0" rpy="0 0 0"/>
 	</xacro:eyeT_support>
+
+    <!-- denso_flange_joint: Because real robot flange frame is rotated by PI/2 -->
+    <joint name="denso_flange_joint" type="fixed" >
+      <origin xyz="0 0 0" rpy="0 -${pi/2} 0" />
+      <parent link="ee_link" />
+      <child link="denso_flange" />
+    </joint>
+
+    <!--denso_flange: Because real robot flange frame is rotated by PI/2 -->
+    <link name="denso_flange"/>
+
+    <!-- tool -->
+    <xacro:suction_gripper_ipa prefix="" parent="denso_flange"/>
 </robot>
