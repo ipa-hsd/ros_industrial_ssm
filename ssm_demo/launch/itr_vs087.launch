@@ -1,17 +1,19 @@
 <launch>
-	<arg name="sim" default="false"/>
-	<arg name="robot_name" default="vs087" />
+    <arg name="sim" default="false"/>
+    <arg name="robot_name" default="vs087" />
     <arg name="urdf_file" default="$(find ssm_demo)/urdf/itr_smartpick_description.urdf.xacro" />
+    <arg name="srdf_file" default="$(find ssm_demo)/config/vs087_config/vs087.srdf" />
 
-	<include file="$(find denso_robot_moveit_config)/launch/moveit_vs087.launch">
-		<arg name="sim" value="$(arg sim)"/>
-		<arg name="urdf_file" value="$(arg urdf_file)"/>
-	</include>
+    <include file="$(find denso_robot_moveit_config)/launch/moveit_vs087.launch">
+        <arg name="sim" value="$(arg sim)"/>
+        <arg name="urdf_file" value="$(arg urdf_file)"/>
+        <arg name="srdf_file" value="$(arg srdf_file)"/>
+    </include>
 
-  	<group if="$(arg sim)">
+    <group if="$(arg sim)">
     	<include file="$(find ssm_demo)/launch/itr_vs087_gazebo.launch">
-      		<arg name="robot_name" value="$(arg robot_name)" />
-	  		<arg name="urdf_file" value="$(arg urdf_file)"/>
+            <arg name="robot_name" value="$(arg robot_name)" />
+            <arg name="urdf_file" value="$(arg urdf_file)"/>
     	</include>
-  	</group>  
+    </group>
 </launch>
