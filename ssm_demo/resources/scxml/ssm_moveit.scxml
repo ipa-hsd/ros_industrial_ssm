@@ -18,28 +18,25 @@
         <qt:editorinfo scenegeometry="255.31;289.30;139.54;239.30;135.77;100" geometry="255.31;289.30;-115.77;-50;135.77;100"/>
         <datamodel>
             <data id="skill" expr="MoveP2P"/>
-            <data id="target" expr="[0.3, 0, 0.8, 0, 90, 0]"/>
+            <data id="target" expr="[0.35, 0, 0.5, 0, 0, 0]"/>
         </datamodel>
-        <transition type="external" event="fail" target="Final_6">
-            <qt:editorinfo endTargetFactors="20.90;62.72"/>
-        </transition>
         <transition type="external" event="success" target="Pick">
             <qt:editorinfo endTargetFactors="3.50;42.49"/>
         </transition>
+        <transition type="external" event="fail" target="Final_6">
+            <qt:editorinfo endTargetFactors="20.90;62.72"/>
+        </transition>
     </state>
-    <final id="Final_6">
-        <qt:editorinfo scenegeometry="408.34;258.65;388.34;238.65;40;40" geometry="408.34;258.65;-20;-20;40;40"/>
-    </final>
     <state id="Move_home_1">
         <qt:editorinfo scenegeometry="231.64;609.98;106.84;559.98;142.80;100" geometry="231.64;609.98;-124.80;-50;142.80;100"/>
         <datamodel>
             <data id="skill" expr="MoveP2P"/>
             <data id="target" expr="[0.3, 0, 0.8, 0, 90, 0]"/>
         </datamodel>
-        <transition type="external" event="fail" target="Final_17"/>
         <transition type="external" event="success" target="Place">
             <qt:editorinfo endTargetFactors="3.17;9.53"/>
         </transition>
+        <transition type="external" event="fail" target="Final_17"/>
     </state>
     <state id="Move_home_2">
         <qt:editorinfo scenegeometry="226.64;965.77;166.64;915.77;138;100" geometry="226.64;965.77;-60;-50;138;100"/>
@@ -52,9 +49,6 @@
             <qt:editorinfo endTargetFactors="21.49;23.36"/>
         </transition>
     </state>
-    <final id="Final_17">
-        <qt:editorinfo scenegeometry="408.34;609.98;388.34;589.98;40;40" geometry="408.34;609.98;-20;-20;40;40"/>
-    </final>
     <state id="Place">
         <qt:editorinfo scenegeometry="526.86;1257.79;587.38;1005.51;297.48;475.57" geometry="526.86;1257.79;60.52;-252.28;297.48;475.57"/>
         <state id="Move_place">
@@ -69,22 +63,23 @@
             <transition type="external" event="fail" target="Final_11"/>
         </state>
         <state id="Gripper_off">
-            <qt:editorinfo scenegeometry="667.38;1331.59;607.38;1281.59;120;100" geometry="140.52;72.31;-60;-50;120;100"/>
+            <qt:editorinfo scenegeometry="667.38;1330.10;607.38;1280.10;120;100" geometry="140.52;72.31;-60;-50;120;100"/>
             <datamodel>
                 <data id="skill" expr="GripperControl"/>
+                <data id="action" expr="off"/>
             </datamodel>
             <transition type="external" event="success" target="Final_5">
                 <qt:editorinfo movePoint="51.93;9.16" endTargetFactors="42.27;20.91"/>
             </transition>
         </state>
         <initial>
-            <qt:editorinfo scenegeometry="670.44;1105.52;650.44;1085.52;40;40" geometry="143.58;-153.76;-20;-20;40;40"/>
+            <qt:editorinfo scenegeometry="670.44;1104.03;650.44;1084.03;40;40" geometry="143.58;-153.76;-20;-20;40;40"/>
             <transition type="external" target="Move_place">
                 <qt:editorinfo endTargetFactors="48.73;8.78"/>
             </transition>
         </initial>
         <final id="Final_5">
-            <qt:editorinfo scenegeometry="668.66;1442.57;648.66;1422.57;40;40" geometry="141.80;183.29;-20;-20;40;40"/>
+            <qt:editorinfo scenegeometry="668.66;1441.08;648.66;1421.08;40;40" geometry="141.80;183.29;-20;-20;40;40"/>
         </final>
         <transition type="external" event="success" target="Move_home_2">
             <qt:editorinfo movePoint="37.30;-26.85" endTargetFactors="92.68;47"/>
@@ -92,35 +87,43 @@
         <final id="Final_11">
             <qt:editorinfo scenegeometry="825.02;1218.90;805.02;1198.90;40;40" geometry="298.16;-38.89;-20;-20;40;40"/>
         </final>
-        <transition type="external" event="fail" target="Final_18"/>
+        <transition type="external" event="fail" target="Final_19">
+            <qt:editorinfo endTargetFactors="20.69;57.99"/>
+        </transition>
     </state>
     <state id="Pick">
-        <qt:editorinfo scenegeometry="630.98;224.93;493.15;-33.21;359.83;976.32" geometry="630.98;224.93;-137.83;-258.14;359.83;976.32"/>
+        <qt:editorinfo scenegeometry="630.98;224.93;491.76;-33.21;361.22;976.32" geometry="630.98;224.93;-139.22;-258.14;361.22;976.32"/>
         <state id="calc_pick_traj">
-            <qt:editorinfo scenegeometry="648.32;204.98;588.32;154.98;120;100" geometry="-43.82;-22.93;-60;-50;120;100"/>
+            <qt:editorinfo scenegeometry="592.72;199.22;532.72;149.22;120;100" geometry="-38.26;-25.71;-60;-50;120;100"/>
             <datamodel>
                 <data id="skill" expr="CalculatePickTrajectory"/>
+                <data id="traj_in" expr="[0.16406, 0.00513, 0.09608, 0, 0, 0, 1]"/>
+                <data id="world_gripper_pose" expr="[0.07901, 0.00513, 0.09608, 0, 0, 0, 1]"/>
+                <data id="traj_out_1" expr="[0.16406, 0.00513, 0.09608, 0, 0, 0, 1]"/>
             </datamodel>
             <transition type="external" event="success" target="Move_approach">
-                <qt:editorinfo endTargetFactors="48.81;9.68"/>
+                <qt:editorinfo movePoint="2.78;0" endTargetFactors="48.81;9.68"/>
             </transition>
         </state>
         <state id="Move_approach">
-            <qt:editorinfo scenegeometry="581.95;352.23;513.15;280.93;151;123" geometry="-49.03;125.81;-68.80;-71.30;151;123"/>
+            <qt:editorinfo scenegeometry="580.56;329.92;511.76;258.62;151;123" geometry="-50.42;104.99;-68.80;-71.30;151;123"/>
             <datamodel>
                 <data id="skill" expr="MoveP2P"/>
-                <data id="target" expr="[0.06, -0.3, 0.55, 0, 135, 0]"/>
             </datamodel>
             <transition type="external" event="success" target="Move_pick">
                 <qt:editorinfo endTargetFactors="48.22;6.23"/>
             </transition>
             <transition type="external" event="fail" target="Final_8"/>
+            <onentry>
+                <script>ud.target = ud.approach</script>
+                <log label="approach" expr="approach"/>
+            </onentry>
         </state>
         <state id="Move_pick">
             <qt:editorinfo scenegeometry="616.58;531.23;527.78;429.93;131;118.30" geometry="-14.40;306.30;-88.80;-101.30;131;118.30"/>
             <datamodel>
                 <data id="skill" expr="MoveP2P"/>
-                <data id="target" expr="[0.06, -0.45, 0.4, 0, 135, 0]"/>
+                <data id="pick" expr="[0.06, -0.45, 0.4, 0, 135, 0]"/>
             </datamodel>
             <transition type="external" event="success" target="Gripper_on">
                 <qt:editorinfo endTargetFactors="51.23;7.11"/>
@@ -130,19 +133,20 @@
             </transition>
         </state>
         <state id="Gripper_on">
-            <qt:editorinfo scenegeometry="637.82;632.85;577.82;582.85;120;100" geometry="-36.42;403.45;-60;-50;120;100"/>
+            <qt:editorinfo scenegeometry="594.56;628.38;534.56;578.38;120;100" geometry="-36.42;403.45;-60;-50;120;100"/>
             <datamodel>
                 <data id="skill" expr="GripperControl"/>
+                <data id="action" expr="on"/>
             </datamodel>
             <transition type="external" event="success" target="Move_retract">
                 <qt:editorinfo endTargetFactors="48.80;9.06"/>
             </transition>
         </state>
         <state id="Move_retract">
-            <qt:editorinfo scenegeometry="592.94;747.94;524.14;697.94;148.80;117" geometry="-38.04;524.50;-68.80;-50;148.80;117"/>
+            <qt:editorinfo scenegeometry="592.94;749.43;524.14;699.43;148.80;117" geometry="-38.04;524.50;-68.80;-50;148.80;117"/>
             <datamodel>
                 <data id="skill" expr="MoveP2P"/>
-                <data id="target" expr="[0.06, -0.45, 0.55, 0, 135, 0]"/>
+                <data id="retract" expr="[0.06, -0.45, 0.55, 0, 135, 0]"/>
             </datamodel>
             <transition type="external" event="success" target="Final_7">
                 <qt:editorinfo endTargetFactors="46.35;17.27"/>
@@ -150,28 +154,34 @@
             <transition type="external" event="fail" target="Final_10"/>
         </state>
         <initial>
-            <qt:editorinfo scenegeometry="647.27;111.63;627.27;91.63;40;40" geometry="-44.87;-116.28;-20;-20;40;40"/>
+            <qt:editorinfo scenegeometry="586.11;108.65;566.11;88.65;40;40" geometry="-44.87;-116.28;-20;-20;40;40"/>
             <transition type="external" target="calc_pick_traj">
                 <qt:editorinfo movePoint="-83.55;-23.87" endTargetFactors="49.29;14.01"/>
             </transition>
         </initial>
         <final id="Final_7">
-            <qt:editorinfo scenegeometry="601.12;874.76;581.12;854.76;40;40" geometry="-31.35;648.34;-20;-20;40;40"/>
+            <qt:editorinfo scenegeometry="599.63;873.27;579.63;853.27;40;40" geometry="-31.35;648.34;-20;-20;40;40"/>
         </final>
         <final id="Final_8">
-            <qt:editorinfo scenegeometry="795.19;340.15;775.19;320.15;40;40" geometry="164.21;113.73;-20;-20;40;40"/>
+            <qt:editorinfo scenegeometry="795.19;338.66;775.19;318.66;40;40" geometry="164.21;113.73;-20;-20;40;40"/>
         </final>
         <final id="Final_9">
             <qt:editorinfo scenegeometry="777.29;478.91;757.29;458.91;40;58" geometry="146.31;253.98;-20;-20;40;58"/>
         </final>
         <final id="Final_10">
-            <qt:editorinfo scenegeometry="793.70;760.88;773.70;740.88;40;40" geometry="162.72;537.44;-20;-20;40;40"/>
+            <qt:editorinfo scenegeometry="793.70;762.37;773.70;742.37;40;40" geometry="162.72;537.44;-20;-20;40;40"/>
         </final>
         <transition type="external" event="success" target="Move_home_1">
             <qt:editorinfo endTargetFactors="43.92;11.60"/>
         </transition>
         <transition type="external" event="fail" target="Final_13"/>
     </state>
+    <final id="Final_6">
+        <qt:editorinfo scenegeometry="408.34;258.65;388.34;238.65;40;40" geometry="408.34;258.65;-20;-20;40;40"/>
+    </final>
+    <final id="Final_17">
+        <qt:editorinfo scenegeometry="408.34;609.98;388.34;589.98;40;40" geometry="408.34;609.98;-20;-20;40;40"/>
+    </final>
     <final id="Final_12">
         <qt:editorinfo scenegeometry="193.95;1078.66;173.95;1058.66;40;40" geometry="193.95;1078.66;-20;-20;40;40"/>
     </final>
@@ -179,6 +189,9 @@
         <qt:editorinfo scenegeometry="1042.85;505.76;1022.85;485.76;40;40" geometry="1042.85;505.76;-20;-20;40;40"/>
     </final>
     <final id="Final_18">
-        <qt:editorinfo scenegeometry="359.11;1233.81;339.11;1213.81;40;40" geometry="359.11;1233.81;-20;-20;40;40"/>
+        <qt:editorinfo scenegeometry="418.78;1203.98;398.78;1183.98;40;40" geometry="418.78;1203.98;-20;-20;40;40"/>
+    </final>
+    <final id="Final_19">
+        <qt:editorinfo scenegeometry="1027.93;1196.52;1007.93;1176.52;40;40" geometry="1027.93;1196.52;-20;-20;40;40"/>
     </final>
 </scxml>
